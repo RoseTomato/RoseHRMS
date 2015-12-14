@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+            http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+            http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+    <!--配置基础扫描包，其中过滤controller注解，交给springMVC-->
+    <context:component-scan base-package="love.drose.hrms">
+        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+        <context:exclude-filter type="annotation" expression="org.springframework.web.bind.annotation.ControllerAdvice"/>
+    </context:component-scan>
+
+    <!--开启注解-->
+    <context:annotation-config/>
+
+    <!--导入资源文件-->
+    <context:property-placeholder location="classpath:db.properties"/>
+
+    <!--配置c3p0数据源-->
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <property name="user" value="${jdbc.user}"/>
+        <property name="password" value="${jdbc.password}"/>
+        <property name="driverClass" value="${jdbc.driverClass}"/>
+        <property name="jdbcUrl" value="${jdbc.jdbcUrl}"/>
+
+        <property name="maxPoolSize" value="${jdbc.maxPoolSize}"/>
+        <property name="minPoolSize" value="${jdbc.minPoolSize}"/>
+    </bean>
+
+    <!--配置SqlSessionFactoryBean-->
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="typeAliasesPackage" value="love.drose.gms.models"/>
+        <property name="plugins">
+            <array>
+                <bean class="com.github.pagehelper.PageHelper">
+                    <property name="properties">
+                        <value>
+                            dialect=mysql
+                            reasonable=true
+                        </value>
+                    </property>
+                </bean>
+            </array>
+        </property>
+    </bean>
+
+    <!--自动扫描mapper-->
+    <bean class="tk.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="love.drose.gms.mappers"/>
+        <!--通用mapper插件配置-->
+        <property name="properties">
+            <value>
+                mappers=tk.mybatis.mapper.common.Mapper
+            </value>
+        </property>
+    </bean>
+
+    <bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate" scope="prototype">
+        <constructor-arg index="0" ref="sqlSessionFactory"/>
+    </bean>
+
+    <!--切面-->
+    <aop:aspectj-autoproxy/>
+    <aop:config>
+        <aop:pointcut id="appService" expression="execution(* love.drose.hrms.services..*Service*.*(..))"/>
+        <aop:advisor advice-ref="txAdvice" pointcut-ref="appService"/>
+    </aop:config>
+
+    <!--事务管理-->
+    <tx:advice id="txAdvice" transaction-manager="transactionManager">
+        <tx:attributes>
+            <tx:method name="select*" read-only="true"/>
+            <tx:method name="find*" read-only="true"/>
+            <tx:method name="get*" read-only="true"/>
+            <tx:method name="*"/>
+        </tx:attributes>
+    </tx:advice>
+
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+
+    <!--&lt;!&ndash;配置权限管理器&ndash;&gt;-->
+    <!--<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">-->
+        <!--<property name="realm" ref="myShiro"/>-->
+        <!--<property name="cacheManager" ref="cacheManager"/>-->
+    <!--</bean>-->
+
+    <!--&lt;!&ndash;配置shiro的过滤器工厂，id-shiroFilter要和我们在web.xml里面配置一致&ndash;&gt;-->
+    <!--<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">-->
+        <!--&lt;!&ndash;调用权限管理器&ndash;&gt;-->
+        <!--<property name="securityManager" ref="securityManager"/>-->
+        <!--&lt;!&ndash;配置登陆请求地址&ndash;&gt;-->
+        <!--<property name="loginUrl" value="/backstageEntrance"/>-->
+        <!--&lt;!&ndash;登陆成功后的跳转地址&ndash;&gt;-->
+        <!--<property name="successUrl" value="/WEB-INF/backstage/backstageIndex"/>-->
+        <!--&lt;!&ndash;不在权限范围&ndash;&gt;-->
+        <!--<property name="unauthorizedUrl" value="/403"/>-->
+
+        <!--&lt;!&ndash;配置权限&ndash;&gt;-->
+        <!--<property name="filterChainDefinitions">-->
+            <!--<value>-->
+                <!--&lt;!&ndash;anon表示无需任何权限即可以访问&ndash;&gt;-->
+                <!--/**=anon-->
+                <!--&lt;!&ndash;以角色作为权限控制&ndash;&gt;-->
+                <!--&lt;!&ndash;/backstageHandler=roles[用户管理员]&ndash;&gt;-->
+                <!--&lt;!&ndash;所有请求都要经过登陆验证&ndash;&gt;-->
+                <!--&lt;!&ndash;/**=authc&ndash;&gt;-->
+            <!--</value>-->
+        <!--</property>-->
+    <!--</bean>-->
+
+    <!--<bean id="cacheManager" class="org.apache.shiro.cache.MemoryConstrainedCacheManager"/>-->
+    <!--<bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"/>-->
+
+    <!--jackson-->
+    <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+        <property name="messageConverters">
+            <list>
+                <ref bean="mappingJacksonHttpMessageConverter"/>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="mappingJacksonHttpMessageConverter" class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+        <property name="supportedMediaTypes">
+            <list>
+                <value>application/json;charset=UTF-8</value>
+            </list>
+        </property>
+    </bean>
+</beans>
