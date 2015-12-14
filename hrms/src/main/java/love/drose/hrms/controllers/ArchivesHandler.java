@@ -11,9 +11,4 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/archivesHandler")
 public class ArchivesHandler extends BaseHandler{
 
-    @RequestMapping("/test")
-    public String test() {
-        System.out.println("test!!!!");
-        return "test";
-    }
 }
