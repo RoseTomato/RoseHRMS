@@ -35,7 +35,7 @@
     <!--配置SqlSessionFactoryBean-->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
-        <property name="typeAliasesPackage" value="love.drose.gms.models"/>
+        <property name="typeAliasesPackage" value="love.drose.hrms.models"/>
         <property name="plugins">
             <array>
                 <bean class="com.github.pagehelper.PageHelper">
@@ -52,7 +52,7 @@
 
     <!--自动扫描mapper-->
     <bean class="tk.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="love.drose.gms.mappers"/>
+        <property name="basePackage" value="love.drose.hrms.mappers"/>
         <!--通用mapper插件配置-->
         <property name="properties">
             <value>
@@ -87,38 +87,38 @@
     </bean>
 
 
-    <!--&lt;!&ndash;配置权限管理器&ndash;&gt;-->
-    <!--<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">-->
-        <!--<property name="realm" ref="myShiro"/>-->
-        <!--<property name="cacheManager" ref="cacheManager"/>-->
-    <!--</bean>-->
+    <!--配置权限管理器-->
+    <bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+        <property name="realm" ref="myShiro"/>
+        <property name="cacheManager" ref="cacheManager"/>
+    </bean>
 
-    <!--&lt;!&ndash;配置shiro的过滤器工厂，id-shiroFilter要和我们在web.xml里面配置一致&ndash;&gt;-->
-    <!--<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">-->
-        <!--&lt;!&ndash;调用权限管理器&ndash;&gt;-->
-        <!--<property name="securityManager" ref="securityManager"/>-->
-        <!--&lt;!&ndash;配置登陆请求地址&ndash;&gt;-->
-        <!--<property name="loginUrl" value="/backstageEntrance"/>-->
-        <!--&lt;!&ndash;登陆成功后的跳转地址&ndash;&gt;-->
-        <!--<property name="successUrl" value="/WEB-INF/backstage/backstageIndex"/>-->
-        <!--&lt;!&ndash;不在权限范围&ndash;&gt;-->
-        <!--<property name="unauthorizedUrl" value="/403"/>-->
+    <!--配置shiro的过滤器工厂，id-shiroFilter要和我们在web.xml里面配置一致-->
+    <bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+        <!--调用权限管理器-->
+        <property name="securityManager" ref="securityManager"/>
+        <!--配置登陆请求地址-->
+        <property name="loginUrl" value="/backstageEntrance"/>
+        <!--登陆成功后的跳转地址-->
+        <property name="successUrl" value="/WEB-INF/hrms/home"/>
+        <!--不在权限范围-->
+        <property name="unauthorizedUrl" value="/403"/>
 
-        <!--&lt;!&ndash;配置权限&ndash;&gt;-->
-        <!--<property name="filterChainDefinitions">-->
-            <!--<value>-->
-                <!--&lt;!&ndash;anon表示无需任何权限即可以访问&ndash;&gt;-->
-                <!--/**=anon-->
-                <!--&lt;!&ndash;以角色作为权限控制&ndash;&gt;-->
-                <!--&lt;!&ndash;/backstageHandler=roles[用户管理员]&ndash;&gt;-->
-                <!--&lt;!&ndash;所有请求都要经过登陆验证&ndash;&gt;-->
-                <!--&lt;!&ndash;/**=authc&ndash;&gt;-->
-            <!--</value>-->
-        <!--</property>-->
-    <!--</bean>-->
+        <!--配置权限-->
+        <property name="filterChainDefinitions">
+            <value>
+                <!--anon表示无需任何权限即可以访问-->
+                /**=anon
+                <!--以角色作为权限控制-->
+                <!--/backstageHandler=roles[用户管理员]-->
+                <!--所有请求都要经过登陆验证-->
+                <!--/**=authc-->
+            </value>
+        </property>
+    </bean>
 
-    <!--<bean id="cacheManager" class="org.apache.shiro.cache.MemoryConstrainedCacheManager"/>-->
-    <!--<bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"/>-->
+    <bean id="cacheManager" class="org.apache.shiro.cache.MemoryConstrainedCacheManager"/>
+    <bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"/>
 
     <!--jackson-->
     <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
