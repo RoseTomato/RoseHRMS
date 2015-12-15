@@ -1,0 +1,39 @@
+2015-12-15 at 10:04:09 CST DEBUG love.drose.hrms.services.impl.BaseService line:35 <init> - <==
+2015-12-15 at 10:04:09 CST DEBUG love.drose.hrms.services.impl.BaseService line:40 <init> - ==>
+2015-12-15 at 10:04:40 CST DEBUG love.drose.hrms.services.impl.BaseService line:35 <init> - <==
+2015-12-15 at 10:04:40 CST DEBUG love.drose.hrms.services.impl.BaseService line:40 <init> - ==>
+2015-12-15 at 10:04:40 CST DEBUG love.drose.hrms.services.impl.BaseService line:35 <init> - <==
+2015-12-15 at 10:04:40 CST DEBUG love.drose.hrms.services.impl.BaseService line:40 <init> - ==>
+2015-12-15 at 10:05:34 CST DEBUG love.drose.hrms.services.impl.BaseService line:35 <init> - <==
+2015-12-15 at 10:05:34 CST DEBUG love.drose.hrms.services.impl.BaseService line:40 <init> - ==>
+2015-12-15 at 10:05:35 CST DEBUG love.drose.hrms.services.impl.BaseService line:35 <init> - <==
+2015-12-15 at 10:05:35 CST DEBUG love.drose.hrms.services.impl.BaseService line:40 <init> - ==>
+2015-12-15 at 10:05:35 CST DEBUG love.drose.hrms.services.impl.BaseService line:35 <init> - <==
+2015-12-15 at 10:05:35 CST DEBUG love.drose.hrms.services.impl.BaseService line:40 <init> - ==>
+2015-12-15 at 10:05:35 CST DEBUG love.drose.hrms.services.impl.BaseService line:77 save - <== [model:Manager{id=null, account='admin', password='21232f297a57a5a743894a0e4a801fc3', name='Rose'}] ==>
+2015-12-15 at 10:07:56 CST DEBUG love.drose.hrms.services.impl.BaseService line:35 <init> - <==
+2015-12-15 at 10:07:56 CST DEBUG love.drose.hrms.services.impl.BaseService line:40 <init> - ==>
+2015-12-15 at 10:07:57 CST DEBUG love.drose.hrms.services.impl.BaseService line:35 <init> - <==
+2015-12-15 at 10:07:57 CST DEBUG love.drose.hrms.services.impl.BaseService line:40 <init> - ==>
+2015-12-15 at 10:07:57 CST DEBUG love.drose.hrms.services.impl.BaseService line:35 <init> - <==
+2015-12-15 at 10:07:57 CST DEBUG love.drose.hrms.services.impl.BaseService line:40 <init> - ==>
+2015-12-15 at 10:07:58 CST DEBUG love.drose.hrms.services.impl.BaseService line:77 save - <== [model:Role{id=null, name='超级管理员'}] ==>
+2015-12-15 at 10:11:51 CST DEBUG love.drose.hrms.services.impl.BaseService line:35 <init> - <==
+2015-12-15 at 10:11:51 CST DEBUG love.drose.hrms.services.impl.BaseService line:40 <init> - ==>
+2015-12-15 at 10:11:52 CST DEBUG love.drose.hrms.services.impl.BaseService line:35 <init> - <==
+2015-12-15 at 10:11:52 CST DEBUG love.drose.hrms.services.impl.BaseService line:40 <init> - ==>
+2015-12-15 at 10:11:52 CST DEBUG love.drose.hrms.services.impl.BaseService line:35 <init> - <==
+2015-12-15 at 10:11:52 CST DEBUG love.drose.hrms.services.impl.BaseService line:40 <init> - ==>
+2015-12-15 at 10:11:52 CST DEBUG love.drose.hrms.services.impl.BaseService line:77 save - <== [model:ManagerRole{managerId=1, roleId=1}] ==>
+2015-12-15 at 10:37:58 CST DEBUG love.drose.hrms.services.impl.BaseService line:35 <init> - <==
+2015-12-15 at 10:37:58 CST DEBUG love.drose.hrms.services.impl.BaseService line:40 <init> - ==>
+2015-12-15 at 10:37:58 CST DEBUG love.drose.hrms.services.impl.BaseService line:35 <init> - <==
+2015-12-15 at 10:37:58 CST DEBUG love.drose.hrms.services.impl.BaseService line:40 <init> - ==>
+2015-12-15 at 10:37:58 CST DEBUG love.drose.hrms.services.impl.BaseService line:35 <init> - <==
+2015-12-15 at 10:37:58 CST DEBUG love.drose.hrms.services.impl.BaseService line:40 <init> - ==>
+2015-12-15 at 10:37:59 CST DEBUG love.drose.hrms.services.impl.ManagerRoleServiceImpl line:29 findRoleNamesByManagerId - <==[managerId:1]
+2015-12-15 at 10:37:59 CST DEBUG love.drose.hrms.services.impl.BaseService line:189 findAllByProperty - <==[propertyName:managerId, value:1]
+2015-12-15 at 10:37:59 CST DEBUG love.drose.hrms.services.impl.BaseService line:120 selectByExample - <== [example:tk.mybatis.mapper.entity.Example@c00fff0] ==>
+2015-12-15 at 10:37:59 CST DEBUG love.drose.hrms.services.impl.BaseService line:201 findAllByProperty - ==>
+2015-12-15 at 10:37:59 CST DEBUG love.drose.hrms.services.impl.BaseService line:58 findById - <== [id:1] ==>
+2015-12-15 at 10:37:59 CST DEBUG love.drose.hrms.services.impl.ManagerRoleServiceImpl line:37 findRoleNamesByManagerId - ==>

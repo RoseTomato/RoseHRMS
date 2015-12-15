@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="RoseHRMS:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="RoseHRMS.war">
+      <element id="artifact" artifact-name="RoseHRMS:war exploded" />
+    </root>
+  </artifact>
+</component>

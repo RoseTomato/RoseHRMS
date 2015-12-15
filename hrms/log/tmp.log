@@ -1,0 +1,39 @@
+10:04:09.951 DEBUG love.drose.hrms.services.impl.BaseService line:35 <init> - <==
+10:04:09.953 DEBUG love.drose.hrms.services.impl.BaseService line:40 <init> - ==>
+10:04:40.307 DEBUG love.drose.hrms.services.impl.BaseService line:35 <init> - <==
+10:04:40.307 DEBUG love.drose.hrms.services.impl.BaseService line:40 <init> - ==>
+10:04:40.335 DEBUG love.drose.hrms.services.impl.BaseService line:35 <init> - <==
+10:04:40.336 DEBUG love.drose.hrms.services.impl.BaseService line:40 <init> - ==>
+10:05:34.109 DEBUG love.drose.hrms.services.impl.BaseService line:35 <init> - <==
+10:05:34.111 DEBUG love.drose.hrms.services.impl.BaseService line:40 <init> - ==>
+10:05:35.227 DEBUG love.drose.hrms.services.impl.BaseService line:35 <init> - <==
+10:05:35.228 DEBUG love.drose.hrms.services.impl.BaseService line:40 <init> - ==>
+10:05:35.261 DEBUG love.drose.hrms.services.impl.BaseService line:35 <init> - <==
+10:05:35.262 DEBUG love.drose.hrms.services.impl.BaseService line:40 <init> - ==>
+10:05:35.652 DEBUG love.drose.hrms.services.impl.BaseService line:77 save - <== [model:Manager{id=null, account='admin', password='21232f297a57a5a743894a0e4a801fc3', name='Rose'}] ==>
+10:07:56.909 DEBUG love.drose.hrms.services.impl.BaseService line:35 <init> - <==
+10:07:56.913 DEBUG love.drose.hrms.services.impl.BaseService line:40 <init> - ==>
+10:07:57.961 DEBUG love.drose.hrms.services.impl.BaseService line:35 <init> - <==
+10:07:57.962 DEBUG love.drose.hrms.services.impl.BaseService line:40 <init> - ==>
+10:07:57.989 DEBUG love.drose.hrms.services.impl.BaseService line:35 <init> - <==
+10:07:57.990 DEBUG love.drose.hrms.services.impl.BaseService line:40 <init> - ==>
+10:07:58.390 DEBUG love.drose.hrms.services.impl.BaseService line:77 save - <== [model:Role{id=null, name='超级管理员'}] ==>
+10:11:51.320 DEBUG love.drose.hrms.services.impl.BaseService line:35 <init> - <==
+10:11:51.323 DEBUG love.drose.hrms.services.impl.BaseService line:40 <init> - ==>
+10:11:52.472 DEBUG love.drose.hrms.services.impl.BaseService line:35 <init> - <==
+10:11:52.473 DEBUG love.drose.hrms.services.impl.BaseService line:40 <init> - ==>
+10:11:52.501 DEBUG love.drose.hrms.services.impl.BaseService line:35 <init> - <==
+10:11:52.502 DEBUG love.drose.hrms.services.impl.BaseService line:40 <init> - ==>
+10:11:52.927 DEBUG love.drose.hrms.services.impl.BaseService line:77 save - <== [model:ManagerRole{managerId=1, roleId=1}] ==>
+10:37:58.667 DEBUG love.drose.hrms.services.impl.BaseService line:35 <init> - <==
+10:37:58.669 DEBUG love.drose.hrms.services.impl.BaseService line:40 <init> - ==>
+10:37:58.761 DEBUG love.drose.hrms.services.impl.BaseService line:35 <init> - <==
+10:37:58.762 DEBUG love.drose.hrms.services.impl.BaseService line:40 <init> - ==>
+10:37:58.806 DEBUG love.drose.hrms.services.impl.BaseService line:35 <init> - <==
+10:37:58.807 DEBUG love.drose.hrms.services.impl.BaseService line:40 <init> - ==>
+10:37:59.206 DEBUG love.drose.hrms.services.impl.ManagerRoleServiceImpl line:29 findRoleNamesByManagerId - <==[managerId:1]
+10:37:59.207 DEBUG love.drose.hrms.services.impl.BaseService line:189 findAllByProperty - <==[propertyName:managerId, value:1]
+10:37:59.210 DEBUG love.drose.hrms.services.impl.BaseService line:120 selectByExample - <== [example:tk.mybatis.mapper.entity.Example@c00fff0] ==>
+10:37:59.343 DEBUG love.drose.hrms.services.impl.BaseService line:201 findAllByProperty - ==>
+10:37:59.345 DEBUG love.drose.hrms.services.impl.BaseService line:58 findById - <== [id:1] ==>
+10:37:59.348 DEBUG love.drose.hrms.services.impl.ManagerRoleServiceImpl line:37 findRoleNamesByManagerId - ==>
